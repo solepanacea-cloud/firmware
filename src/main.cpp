@@ -38,6 +38,7 @@
 #include "mesh/generated/meshtastic/config.pb.h"
 #include "meshUtils.h"
 #include "modules/Modules.h"
+#include "modules/BNO086Compass.h"
 #include "sleep.h"
 #include "target_specific.h"
 #include <memory>
@@ -975,6 +976,7 @@ void setup()
 #endif
 #endif
 
+    bno086CompassInit();
     auto rIf = initLoRa();
 
     lateInitVariant(); // Do board specific init (see extra_variants/README.md for documentation)
@@ -1147,6 +1149,7 @@ void loop()
 #ifdef ARCH_NRF54L15
     nrf54l15Loop();
 #endif
+    bno086CompassUpdate();
     power->powerCommandsCheck();
 
     if (RadioLibInterface::instance != nullptr) {
