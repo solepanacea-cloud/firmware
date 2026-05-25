@@ -976,7 +976,6 @@ void setup()
 #endif
 #endif
 
-    bno086CompassInit();
     auto rIf = initLoRa();
 
     lateInitVariant(); // Do board specific init (see extra_variants/README.md for documentation)
